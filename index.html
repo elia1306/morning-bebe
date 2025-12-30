@@ -7,32 +7,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Bubbles&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
         :root {
-            /* 🍬 馬卡龍甜點配色 🍬 */
-            --macaron-pink: #ffc8dd;   /* 草莓牛奶 */
-            --macaron-blue: #aed9e0;   /* 寶寶粉藍 */
-            --macaron-green: #b7e4c7;  /* 薄荷綠 */
-            --macaron-yellow: #fbf8cc; /* 檸檬奶油 */
-            --macaron-purple: #dcd3ff; /* 薰衣草 */
-            --macaron-cream: #fffdf9;  /* 鮮奶油底色 */
-            --text-dark: #5d4e6d;      /* 溫柔的深紫色文字 */
-            
+            /* 🍬 馬卡龍配色變數 */
+            --macaron-pink: #ffc8dd;
+            --macaron-blue: #aed9e0;
+            --macaron-green: #b7e4c7;
+            --macaron-yellow: #fbf8cc;
+            --macaron-purple: #dcd3ff;
+            --macaron-cream: #fffdf9;
+            --text-dark: #5d4e6d;
             --font-main: 'ZCOOL KuaiLe', cursive; 
             --font-en: 'Rubik Bubbles', cursive; 
         }
 
         body {
             font-family: var(--font-main);
-            background-color: var(--macaron-cream);
-            /* 夢幻棉花糖背景 + 彩色糖珠 */
-            background-image: 
-                radial-gradient(circle at 10% 20%, var(--macaron-pink) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, var(--macaron-blue) 0%, transparent 20%),
-                radial-gradient(circle at 50% 50%, var(--macaron-yellow) 0%, transparent 15%),
-                radial-gradient(#ff9aa2 2px, transparent 2px), radial-gradient(#c7ceff 2px, transparent 2px);
-            background-size: 100% 100%, 100% 100%, 100% 100%, 50px 50px, 70px 70px;
-            background-position: 0 0, 0 0, 0 0, 0 0, 25px 25px;
-            
             color: var(--text-dark);
             margin: 0;
             padding: 15px;
@@ -41,94 +31,99 @@
             align-items: center;
             min-height: 100vh;
             padding-bottom: calc(20px + env(safe-area-inset-bottom));
+
+            /* ==========================================================
+               🎨 【背景設定區】請在這裡調整
+               ========================================================== */
+            
+            /* 1. 修改背景顏色 (如果沒放圖片，就會顯示這個顏色) */
+            /* 淺藍: #dff9fb | 淺粉: #ffeaa7 | 米白: #f5f6fa */
+            background-color: #C9BDDB; 
+
+            /* 2. 設定背景圖片 (請將引號內的檔名改成您上傳到 GitHub 的檔名) */
+            /* 如果不想用圖片，請把下面這行整行刪掉，或在最前面加 // */
+            /* background-image: url('bg1.png'); */
+
+            /* 3. 圖片顯示模式 (二選一，把不用的那行前面加上 // 註解掉) */
+
+            /* 模式 A：【填滿 (Fill/Cover)】 (推薦：適合風景或照片，會裁切邊緣以填滿螢幕) */
+            background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;
+
+            /* 模式 B：【單張完整 (Single/Contain)】 (適合Logo或不想被裁切的圖，周圍會留白) */
+            /* background-size: contain; background-position: center top; background-repeat: no-repeat; background-attachment: fixed; */
+            
+            /* ==========================================================
+               設定區結束
+               ========================================================== */
         }
 
-        header { 
-            margin-bottom: 10px; text-align: center; display: flex; flex-direction: column; align-items: center;
+        /* 如果沒有設定圖片，預設顯示可愛的圓點點裝飾 */
+        body:not([style*="background-image"]) {
+            background-image: 
+                radial-gradient(circle at 10% 20%, var(--macaron-pink) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, var(--macaron-blue) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, var(--macaron-yellow) 0%, transparent 15%),
+                radial-gradient(#ff9aa2 2px, transparent 2px), radial-gradient(#c7ceff 2px, transparent 2px);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 50px 50px, 70px 70px;
+            background-position: 0 0, 0 0, 0 0, 0 0, 25px 25px;
+            background-attachment: fixed;
         }
+
+        header { margin-bottom: 10px; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .header-title-row { display: flex; align-items: center; justify-content: center; gap: 10px; }
         .sun-mascot-small { width: 55px; height: 55px; animation: spin-slow 12s linear infinite; filter: drop-shadow(0 2px 4px rgba(255, 200, 221, 0.5)); }
 
         h1 {
-            color: var(--text-dark);
-            margin: 5px 0;
-            font-size: 2.5rem;
-            /* 像糖霜一樣的文字邊框 */
+            color: var(--text-dark); margin: 5px 0; font-size: 2.5rem;
             text-shadow: 2px 2px 0px var(--macaron-cream), 4px 4px 0px var(--macaron-pink);
             letter-spacing: 2px;
         }
 
         #clock {
-            font-family: var(--font-en); font-size: 1.4rem;
-            color: var(--text-dark);
-            background: rgba(255,255,255,0.8);
-            padding: 5px 15px; border-radius: 25px;
-            display: inline-block;
-            border: 3px solid var(--macaron-blue);
-            box-shadow: 0 4px 0 var(--macaron-pink);
+            font-family: var(--font-en); font-size: 1.4rem; color: var(--text-dark);
+            background: rgba(255,255,255,0.8); padding: 5px 15px; border-radius: 25px;
+            display: inline-block; border: 3px solid var(--macaron-blue); box-shadow: 0 4px 0 var(--macaron-pink);
         }
 
-        /* 星星計數器 - 像個檸檬塔 */
         .star-display {
-            background: var(--macaron-yellow);
-            padding: 8px 25px; border-radius: 60px;
+            background: var(--macaron-yellow); padding: 8px 25px; border-radius: 60px;
             box-shadow: 0 6px 0 #eadd78, 0 10px 15px rgba(255, 200, 221, 0.3);
-            margin: 15px 0; display: flex; align-items: center;
-            font-size: 2.2rem;
-            border: 5px solid var(--macaron-cream);
-            color: #ff9aa2;
-            transform: rotate(-3deg);
+            margin: 15px 0; display: flex; align-items: center; font-size: 2.2rem;
+            border: 5px solid var(--macaron-cream); color: #ff9aa2; transform: rotate(-3deg);
         }
         .star-display span { font-family: var(--font-en); }
         .star-icon { margin-right: 10px; filter: drop-shadow(0 2px 0 rgba(0,0,0,0.1)); }
 
-        /* 遊戲卡片 - 軟綿綿的糖霜餅乾 */
         .game-card {
-            background: var(--macaron-cream);
-            padding: 25px 20px;
-            border-radius: 40px;
-            width: 100%; max-width: 450px;
+            background: rgba(255, 253, 249, 0.95);
+            padding: 25px 20px; border-radius: 40px; width: 100%; max-width: 450px;
             display: flex; flex-direction: column; align-items: center;
-            /* 雙層糖霜邊框 */
-            border: 8px solid var(--macaron-blue);
-            outline: 5px solid var(--macaron-cream);
+            border: 8px solid var(--macaron-blue); outline: 5px solid var(--macaron-cream);
             box-shadow: 0 12px 0 #92cdd6, 0 20px 25px rgba(174, 217, 224, 0.4);
-            margin-bottom: 30px;
-            position: relative;
+            margin-bottom: 30px; position: relative;
         }
 
         .level-sticker-container { height: 140px; display: flex; align-items: center; justify-content: center; margin: 5px 0; }
         .svg-icon { width: 130px; height: 130px; filter: drop-shadow(0 6px 0 rgba(174, 217, 224, 0.2)); animation: bounce 2.5s infinite ease-in-out; }
         .level-sticker { font-size: 6.5rem; line-height: 1; filter: drop-shadow(0 5px 0 rgba(174, 217, 224, 0.2)); animation: bounce 2.5s infinite ease-in-out; }
         .blue-bag { filter: hue-rotate(210deg) drop-shadow(0 5px 0 rgba(174, 217, 224, 0.2)) !important; }
-
         .level-title { font-size: 2.2rem; color: var(--text-dark); margin: 15px 0; text-shadow: 2px 2px 0 var(--macaron-pink); }
         
-        /* 能量條 - 像夾心軟糖 */
         .progress-bar-wrap { width: 100%; height: 28px; background: var(--macaron-cream); border-radius: 14px; border: 4px solid #eee; margin: 10px 0; overflow: hidden; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);}
         .progress-bar { height: 100%; width: 100%; background: linear-gradient(90deg, var(--macaron-green), #8ae0a4); transition: width 1s linear; border-radius: 10px; }
-        
         .timer-text { font-family: var(--font-en); font-size: 1.6rem; color: #aaa; margin-bottom: 25px; }
 
-        /* GO 按鈕 - 巨大的草莓馬卡龍 */
         .btn-go {
-            width: 130px; height: 130px;
-            border-radius: 50%;
+            width: 130px; height: 130px; border-radius: 50%;
             background: radial-gradient(circle at 30% 30%, var(--macaron-pink), #ff9aa2);
-            border: 8px solid var(--macaron-cream);
-            color: var(--text-dark);
-            font-family: var(--font-en);
-            font-size: 3rem;
-            cursor: pointer;
+            border: 8px solid var(--macaron-cream); color: var(--text-dark);
+            font-family: var(--font-en); font-size: 3rem; cursor: pointer;
             box-shadow: 0 10px 0 #ff8593, 0 15px 20px rgba(255, 154, 162, 0.4);
-            transition: all 0.15s;
-            display: flex; align-items: center; justify-content: center;
-            text-shadow: 2px 2px 0 rgba(255,255,255,0.5);
-            -webkit-user-select: none; user-select: none;
+            transition: all 0.15s; display: flex; align-items: center; justify-content: center;
+            text-shadow: 2px 2px 0 rgba(255,255,255,0.5); -webkit-user-select: none; user-select: none;
         }
         .btn-go:active { transform: translateY(10px) scale(0.95); box-shadow: 0 0 0 #ff8593, inset 0 5px 10px rgba(0,0,0,0.1); }
 
-        /* 完成後的按鈕樣式 (薄荷馬卡龍 + 勾勾) */
         .btn-go.finish {
             width: 100%; height: auto; border-radius: 40px;
             background: radial-gradient(circle at 50% 0%, var(--macaron-green), #98e6ad);
@@ -139,14 +134,10 @@
         
         .check-icon { width: 55px; height: 55px; fill: none; stroke: var(--text-dark); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(2px 2px 0 rgba(255,255,255,0.5)); animation: pop-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
 
-        /* 月曆 */
         .calendar-card {
-            width: 100%; max-width: 450px;
-            background: var(--macaron-cream);
-            border-radius: 30px; padding: 20px;
-            border: 5px solid var(--macaron-purple);
-            box-shadow: 0 8px 0 #c4b7ff, 0 15px 20px rgba(220, 211, 255, 0.4);
-            margin-bottom: 20px;
+            width: 100%; max-width: 450px; background: var(--macaron-cream);
+            border-radius: 30px; padding: 20px; border: 5px solid var(--macaron-purple);
+            box-shadow: 0 8px 0 #c4b7ff, 0 15px 20px rgba(220, 211, 255, 0.4); margin-bottom: 20px;
         }
         .calendar-header { text-align: center; font-size: 1.6rem; color: var(--text-dark); margin-bottom: 15px; }
         .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
@@ -252,7 +243,7 @@
             <path d="M60 40 Q75 30 70 20" stroke="#ffeaa7" stroke-width="7" stroke-linecap="round" fill="none"/>
         </svg>`;
 
-        // 勾勾圖示 (深紫色)
+        // 勾勾圖示
         const checkIconSVG = `
         <svg class="check-icon" viewBox="0 0 24 24">
             <polyline points="20 6 9 17 4 12"></polyline>
@@ -295,11 +286,14 @@
             clockEl.textContent = now.toLocaleTimeString('zh-TW', { hour12: false, hour: '2-digit', minute:'2-digit' });
         }, 1000);
 
+        // 語音可愛化：調高音調，加快語速
         function speak(text) {
             if ('speechSynthesis' in window) {
                 const cleanText = text.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{200D}：]/gu, '');
                 const utterance = new SpeechSynthesisUtterance(cleanText);
-                utterance.lang = 'zh-TW'; utterance.rate = 1; utterance.pitch = 1.2;
+                utterance.lang = 'zh-TW'; 
+                utterance.rate = 1.1; 
+                utterance.pitch = 1.4; // 卡通音
                 window.speechSynthesis.speak(utterance);
             }
         }
@@ -335,7 +329,8 @@
             const lvl = levels[currentLevelIndex];
             
             levelNameEl.textContent = lvl.name;
-            speak(lvl.name + "，GO！");
+            // 語音修改：不讀 GO
+            speak(lvl.name);
 
             if (lvl.type === 'html') {
                 levelIconContainer.innerHTML = lvl.icon;
@@ -371,7 +366,19 @@
         function finishLevelAndAutoStartNext() {
             clearInterval(timerInterval);
             const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
-            if (elapsedSeconds <= TIME_LIMIT) { updateStars(1); }
+            
+            // === 新計分邏輯 ===
+            // 5分鐘內：基本分 +1
+            // 每省下 1 分鐘：+1
+            let starsEarned = 0;
+            if (elapsedSeconds <= TIME_LIMIT) {
+                starsEarned = 1;
+                const savedSeconds = TIME_LIMIT - elapsedSeconds;
+                const speedBonus = Math.floor(savedSeconds / 60);
+                starsEarned += speedBonus;
+                updateStars(starsEarned);
+            }
+
             currentLevelIndex++;
             if (currentLevelIndex < levels.length) { startLevel(); } else { endGame(); }
         }
@@ -385,10 +392,11 @@
 
             let isEarlyBird = false;
             let bonusText = "";
+            // 早鳥 +5
             if (now < targetTime) {
                 updateStars(5);
                 isEarlyBird = true;
-                bonusText = "早鳥達成！";
+                bonusText = "早鳥 +5 顆星！";
             }
 
             saveDailyRecord(isEarlyBird);
