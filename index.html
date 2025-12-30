@@ -19,8 +19,7 @@
             --font-main: 'ZCOOL KuaiLe', cursive; 
             --font-en: 'Rubik Bubbles', cursive; 
         }
-
-        body {
+body {
             font-family: var(--font-main);
             color: var(--text-dark);
             margin: 0;
@@ -31,13 +30,29 @@
             min-height: 100vh;
             padding-bottom: calc(20px + env(safe-area-inset-bottom));
 
-            /* 背景設定 */
+            /* === 背景設定修正 === */
+            
+            /* 1. 設定底色 */
             background-color: var(--ghibli-sky);
+
+            /* 2. 設定圖片 */
             background-image: url('shiro2.png');
-            background-position: 0 0, 25px 25px;
-            background-size: 100px 100px;
+
+            /* 3. 設定大小 (如果您希望圖案小一點，可以把 100px 改成 50px) */
+            background-size: 100px auto; 
+
+            /* 4. 設定重複排列 */
             background-repeat: repeat;
+
+            /* 5. 修正位置 (單張圖只需要一個位置設定) */
+            background-position: center top; 
+
+            /* 6. 固定背景不捲動 */
             background-attachment: fixed; 
+            
+            /* ★★★ 救命絕招：混合模式 ★★★ */
+            /* 如果您的 shiro2.png 不是透明的 (有白底)，加上這行可以讓白底變透明！ */
+            background-blend-mode: multiply;
         }
 
         header { 
@@ -588,3 +603,4 @@
     </script>
 </body>
 </html>
+
