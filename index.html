@@ -39,7 +39,7 @@ body {
             background-image: url('shiro2.png');
 
             /* 3. 設定大小 (如果您希望圖案小一點，可以把 100px 改成 50px) */
-            background-size: 100px auto; 
+            background-size: 300px auto; 
 
             /* 4. 設定重複排列 */
             background-repeat: repeat;
@@ -52,7 +52,7 @@ body {
             
             /* ★★★ 救命絕招：混合模式 ★★★ */
             /* 如果您的 shiro2.png 不是透明的 (有白底)，加上這行可以讓白底變透明！ */
-            background-blend-mode: multiply;
+            /* background-blend-mode: multiply; */
         }
 
         header { 
@@ -67,9 +67,15 @@ body {
             width: 60px; height: 60px; animation: spin-slow 16s linear infinite; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1)); 
         }
 
-        h1 {
-            color: #FFF; margin: 0; font-size: 2.8rem; font-family: var(--font-en); 
-            text-shadow: 3px 3px 0px #4A90E2, 5px 5px 5px rgba(0,0,0,0.2); letter-spacing: 2px; line-height: 1.2;
+       h1 {
+            color: #4A3B2F; /* 深咖啡色 */
+            margin: 0;
+            font-size: 2.8rem;
+            font-family: var(--font-en); 
+            /* 陰影改成淺米色，營造立體貼紙感 */
+            text-shadow: 3px 3px 0px #FFFBE8, 5px 5px 5px rgba(0,0,0,0.1);
+            letter-spacing: 2px;
+            line-height: 1.2;
         }
 
         .status-bar {
@@ -603,4 +609,5 @@ body {
     </script>
 </body>
 </html>
+
 
