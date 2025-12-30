@@ -9,7 +9,8 @@
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
         :root {
-            --ghibli-sky: #A1D2EB;      /* 指定的淺藍底色 */
+            /* 🎨 吉卜力自然色盤 */
+            --ghibli-sky: #A1D2EB;      /* 淺藍底色 */
             --ghibli-sun: #F4EBC1;
             --ghibli-earth: #8B5E3C;
             --ghibli-cream: #FFFBE8;
@@ -31,111 +32,59 @@
             padding-bottom: calc(20px + env(safe-area-inset-bottom));
 
             /* ==========================================================
-               🎨 背景設定 (底色 + 半透明圖案)
+               🎨 背景設定
                ========================================================== */
             
-            /* 1. 設定底色 (淺藍) */
+            /* 1. 底色 */
             background-color: var(--ghibli-sky);
 
-            /* 2. 設定圖案 */
-            /* 這裡使用 CSS 畫出半透明白點，保證會透出底色 */
-            /* 如果要用自己的圖，請改為: background-image: url('your-transparent-image.png'); */
-            background-image: url('bg1.png');          
-          
-            background-size: 300px;
+            /* 2. 圖案 (透明去背圖) */
+            /* 這裡預設用 CSS 畫半透明白點，若要用自己的圖請改 url('bg.png') */
+            background-image: url('shiro.png');
+            
+            background-position: 0 0, 25px 25px;
+            background-size: 100px 100px;
             background-repeat: repeat;
+            background-attachment: fixed; 
         }
 
         header { 
-            width: 100%;
-            margin-bottom: 15px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center;
+            width: 100%; margin-bottom: 10px; display: flex; flex-direction: column; align-items: center;
         }
 
         .header-top-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 15px;
+            display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px;
         }
 
-        /* 小太陽 (加深顏色版) */
         .sun-mascot-small { 
-            width: 60px; height: 60px; 
-            animation: spin-slow 16s linear infinite; 
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1)); 
+            width: 60px; height: 60px; animation: spin-slow 16s linear infinite; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1)); 
         }
 
         h1 {
-            color: #4A90E2; 
-            margin: 0;
-            font-size: 2.8rem;
-            font-family: var(--font-en); 
-            text-shadow: 3px 3px 0px #9DD8FF, 5px 5px 5px rgba(0,0,0,0.2);
-            letter-spacing: 2px;
-            line-height: 1.2;
+            color: #FFF; margin: 0; font-size: 2.8rem; font-family: var(--font-en); 
+            text-shadow: 3px 3px 0px #4A90E2, 5px 5px 5px rgba(0,0,0,0.2); letter-spacing: 2px; line-height: 1.2;
         }
 
-        /* 📊 狀態列：包含星星和時鐘 */
+        /* 📊 狀態列 */
         .status-bar {
-            display: flex;
-            align-items: stretch; /* 讓兩個框框等高 */
-            justify-content: center;
-            gap: 15px;
-            width: 100%;
-            max-width: 400px;
+            display: flex; align-items: stretch; justify-content: center; gap: 15px; width: 100%; max-width: 400px;
         }
 
-        /* 星星計數器 */
         .star-widget {
-            flex: 1;
-            background: var(--ghibli-sun);
-            padding: 10px;
-            border-radius: 20px;
-            box-shadow: 0 4px 0 #D9CFA0, 0 5px 10px rgba(0,0,0,0.1);
-            display: flex; 
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            border: 3px solid var(--ghibli-earth);
-            color: #D35400;
+            flex: 1; background: var(--ghibli-sun); padding: 10px; border-radius: 20px;
+            box-shadow: 0 4px 0 #D9CFA0, 0 5px 10px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; border: 3px solid var(--ghibli-earth); color: #D35400;
         }
         .star-count-text { font-family: var(--font-en); font-weight: bold; margin-left: 5px; }
 
-        /* ⏰ 類比時鐘容器 */
         .clock-widget {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 5px;
-            border-radius: 20px;
-            box-shadow: 0 4px 0 rgba(139, 94, 60, 0.3), 0 5px 10px rgba(0,0,0,0.1);
-            display: flex; 
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            flex: 1; background: rgba(255, 255, 255, 0.9); padding: 5px; border-radius: 20px;
+            box-shadow: 0 4px 0 rgba(139, 94, 60, 0.3), 0 5px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center; justify-content: center;
             border: 3px solid var(--ghibli-earth);
         }
 
-        /* SVG 時鐘本體 */
-        .analog-clock {
-            width: 70px;
-            height: 70px;
-        }
-        
-        /* 數字時間文字 */
-        .digital-time {
-            font-family: var(--font-en);
-            color: var(--text-dark);
-            font-size: 1rem;
-            margin-top: -5px;
-        }
-
-        /* 時鐘指針轉軸中心 */
-        .clock-center { fill: #8B5E3C; }
-        /* 指針樣式 */
+        .analog-clock { width: 70px; height: 70px; }
+        .digital-time { font-family: var(--font-en); color: var(--text-dark); font-size: 1rem; margin-top: -5px; }
         .hand { transform-origin: 50% 50%; stroke-linecap: round; }
         .hand-hour { stroke: #4A3B2F; stroke-width: 4; }
         .hand-min { stroke: #8B5E3C; stroke-width: 3; }
@@ -145,14 +94,11 @@
         .game-card {
             background: var(--ghibli-cream);
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
-            padding: 25px 20px;
-            border-radius: 25px;
-            width: 100%; max-width: 450px;
+            padding: 25px 20px; border-radius: 25px; width: 100%; max-width: 450px;
             display: flex; flex-direction: column; align-items: center;
             border: 6px solid var(--ghibli-earth);
             box-shadow: 0 10px 0 rgba(139, 94, 60, 0.3), 0 15px 25px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-            position: relative;
+            margin-bottom: 20px; position: relative;
         }
 
         .level-sticker-container { height: 140px; display: flex; align-items: center; justify-content: center; margin: 5px 0; }
@@ -162,58 +108,58 @@
 
         .level-title { font-size: 2.2rem; color: var(--text-dark); margin: 15px 0; text-align: center; }
         
-        /* 💧 進度條 */
         .progress-bar-wrap { 
-            width: 100%; height: 30px; 
-            background: #F0F4F8; border-radius: 15px; 
-            border: 4px solid var(--ghibli-earth);
-            margin: 10px 0; overflow: hidden; 
+            width: 100%; height: 30px; background: #F0F4F8; border-radius: 15px; 
+            border: 4px solid var(--ghibli-earth); margin: 10px 0; overflow: hidden; 
             box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
         }
         .progress-bar { 
-            height: 100%; width: 100%; 
-            background: linear-gradient(to bottom, #A1D2EB, #8FBED8); 
-            transition: width 1s linear; 
-            border-radius: 10px;
-            border-right: 3px solid rgba(255,255,255,0.5);
+            height: 100%; width: 100%; background: linear-gradient(to bottom, #A1D2EB, #8FBED8); 
+            transition: width 1s linear; border-radius: 10px; border-right: 3px solid rgba(255,255,255,0.5);
         }
         
         .timer-text { font-family: var(--font-en); font-size: 1.6rem; color: #8D7B68; margin-bottom: 25px; }
 
-        /* 🔲 方形 GO 按鈕 */
         .btn-go {
             width: 150px; height: 130px; border-radius: 20px;
             background: linear-gradient(to bottom, #D4A373 0%, #B38253 100%);
-            border: 5px solid #8B5E3C;
-            color: #FFFBE8;
-            font-family: var(--font-en); font-size: 3rem;
-            cursor: pointer;
+            border: 5px solid #8B5E3C; color: #FFFBE8; font-family: var(--font-en); font-size: 3rem; cursor: pointer;
             box-shadow: 0 12px 0 #6D4C41, 0 15px 20px rgba(0,0,0,0.3), inset 0 2px 3px rgba(255,255,255,0.3);
-            transition: all 0.15s;
-            display: flex; align-items: center; justify-content: center;
-            text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
-            -webkit-user-select: none; user-select: none;
+            transition: all 0.15s; display: flex; align-items: center; justify-content: center;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.3); -webkit-user-select: none; user-select: none;
         }
         .btn-go:active { transform: translateY(10px) scale(0.98); box-shadow: 0 2px 0 #6D4C41, inset 0 5px 10px rgba(0,0,0,0.2); }
 
         .btn-go.finish {
             width: 100%; height: auto; border-radius: 25px;
             background: linear-gradient(to bottom, #87C158 0%, #6EA343 100%);
-            border: 5px solid #557D36;
-            font-size: 0; padding: 18px 0;
+            border: 5px solid #557D36; font-size: 0; padding: 18px 0;
             box-shadow: 0 10px 0 #426628, 0 15px 20px rgba(0,0,0,0.2), inset 0 2px 3px rgba(255,255,255,0.3);
         }
         .btn-go.finish:active { transform: translateY(10px); box-shadow: 0 2px 0 #426628; }
         
         .check-icon { width: 55px; height: 55px; fill: none; stroke: #FFFBE8; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.3)); animation: pop-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
 
+        /* 🗓️ 每週統計卡片 (木牌風格) */
+        .weekly-stats-card {
+            width: 100%; max-width: 450px;
+            background: #F4EBC1; /* 奶油黃 */
+            border-radius: 15px; padding: 10px 20px;
+            border: 4px solid #D9CFA0;
+            margin-bottom: 10px;
+            color: #D35400;
+            font-size: 1.4rem;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 5px 0 rgba(0,0,0,0.1);
+        }
+        .weekly-stats-title { font-size: 1.1rem; color: #8B5E3C; }
+        .weekly-stats-count { font-family: var(--font-en); font-weight: bold; font-size: 1.6rem; }
+
         /* 月曆 */
         .calendar-card {
-            width: 100%; max-width: 450px;
-            background: var(--ghibli-cream);
+            width: 100%; max-width: 450px; background: var(--ghibli-cream);
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
-            border-radius: 25px; padding: 20px;
-            border: 5px solid var(--ghibli-earth);
+            border-radius: 25px; padding: 20px; border: 5px solid var(--ghibli-earth);
             box-shadow: 0 8px 0 rgba(139, 94, 60, 0.3), 0 15px 20px rgba(0,0,0,0.1);
             margin-bottom: 20px;
         }
@@ -222,9 +168,12 @@
         .cal-day {
             aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;
             background: rgba(255,255,255,0.5); border-radius: 12px; font-family: var(--font-en); color: #A09383; font-size: 1.1rem;
-            border: 2px solid transparent;
+            border: 2px solid transparent; position: relative;
         }
-        .cal-day.done { background: var(--ghibli-sun); color: #D35400; border: 3px solid #D9CFA0; font-size: 1.3rem; box-shadow: 0 3px 0 #D9CFA0; transform: rotate(-2deg); }
+        /* 完成的印章 - 顯示星星數 */
+        .cal-day.done { background: var(--ghibli-sun); color: #D35400; border: 3px solid #D9CFA0; font-size: 1.2rem; box-shadow: 0 3px 0 #D9CFA0; transform: rotate(-2deg); font-weight: bold; }
+        .cal-day.done::after { content: '⭐'; font-size: 0.6rem; position: absolute; bottom: 2px; right: 2px; }
+        /* 早鳥金色印章 */
         .cal-day.early { background: #FFD700; color: #FFFBE8; border: 3px solid #DAA520; box-shadow: 0 3px 0 #DAA520; transform: rotate(2deg); }
         .cal-day.today { border: 3px dashed var(--ghibli-sky); }
 
@@ -254,7 +203,6 @@
                 <circle cx="35" cy="52" r="4" fill="#FF9A9E" opacity="0.8"/> <circle cx="65" cy="52" r="4" fill="#FF9A9E" opacity="0.8"/>
                 <path d="M42 55 Q50 62 58 55" fill="none" stroke="#4A3B2F" stroke-width="2" stroke-linecap="round"/>
             </svg>
-            
             <h1>Good Morning</h1>
         </div>
 
@@ -271,11 +219,9 @@
                     <line x1="50" y1="90" x2="50" y2="85" stroke="#8B5E3C" stroke-width="2" />
                     <line x1="10" y1="50" x2="15" y2="50" stroke="#8B5E3C" stroke-width="2" />
                     <line x1="90" y1="50" x2="85" y2="50" stroke="#8B5E3C" stroke-width="2" />
-                    
                     <line id="hand-hour" class="hand hand-hour" x1="50" y1="50" x2="50" y2="25" />
                     <line id="hand-min" class="hand hand-min" x1="50" y1="50" x2="50" y2="15" />
                     <line id="hand-sec" class="hand hand-sec" x1="50" y1="50" x2="50" y2="12" />
-                    
                     <circle cx="50" cy="50" r="3" fill="#8B5E3C" />
                 </svg>
                 <div class="digital-time" id="digital-clock">--:--</div>
@@ -298,6 +244,11 @@
         <button class="btn-go" id="action-btn" onclick="handleAction()">GO!</button>
     </div>
 
+    <div class="weekly-stats-card">
+        <span class="weekly-stats-title">本週戰績</span>
+        <span class="weekly-stats-count" id="weekly-stars">0 ⭐</span>
+    </div>
+
     <div class="calendar-card">
         <div class="calendar-header" id="cal-month-title">月曆</div>
         <div class="calendar-grid" id="calendar-grid"></div>
@@ -310,7 +261,6 @@
     <canvas id="confetti-canvas"></canvas>
 
     <script>
-        // SVG 定義
         const cuteSunSVG = `
         <svg class="svg-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <g class="sun-rays" stroke="#FF9F43" stroke-width="6" stroke-linecap="round">
@@ -350,263 +300,11 @@
             { name: "換衣服", icon: "👕", type: "emoji", style: "" },
             { name: "收書包", icon: "🎒", type: "emoji", style: "blue-bag" }, 
             { name: "穿襪子鞋子", icon: "🧦👟", type: "emoji", style: "" },
-            { name: "Ready!", icon: boyWithBagSVG, type: "html", style: "" } 
+            { name: "門口準備", icon: boyWithBagSVG, type: "html", style: "" } 
         ];
 
         let currentLevelIndex = 0;
         let isRunning = false;
         let startTime = 0;
         let timerInterval;
-        let totalStars = 0;
-        let gameFinished = false;
-        const TIME_LIMIT = 300; 
-
-        const levelNameEl = document.getElementById('level-name');
-        const levelIconContainer = document.getElementById('level-icon-container');
-        const defaultSunEl = document.getElementById('default-sun');
-        const timerEl = document.getElementById('timer');
-        const progressBar = document.getElementById('progress-bar');
-        const btnEl = document.getElementById('action-btn');
-        const starsCountEl = document.getElementById('stars-count');
-        const calGrid = document.getElementById('calendar-grid');
-        const calTitle = document.getElementById('cal-month-title');
-        
-        // 時鐘指針元素
-        const handHour = document.getElementById('hand-hour');
-        const handMin = document.getElementById('hand-min');
-        const handSec = document.getElementById('hand-sec');
-        const digitalClock = document.getElementById('digital-clock');
-
-        defaultSunEl.innerHTML = cuteSunSVG;
-        loadStars();
-        renderCalendar(); 
-        updateClock(); // 立即執行一次
-        setInterval(updateClock, 1000); // 每秒更新時鐘
-
-        function updateClock() {
-            const now = new Date();
-            const h = now.getHours();
-            const m = now.getMinutes();
-            const s = now.getSeconds();
-
-            // 數位顯示
-            digitalClock.textContent = now.toLocaleTimeString('zh-TW', { hour12: false, hour: '2-digit', minute:'2-digit' });
-
-            // 指針角度計算
-            // 秒針：每秒 6 度
-            const secDeg = s * 6;
-            // 分針：每分 6 度 + 每秒 0.1 度
-            const minDeg = m * 6 + s * 0.1;
-            // 時針：每時 30 度 + 每分 0.5 度
-            const hourDeg = (h % 12) * 30 + m * 0.5;
-
-            handSec.style.transform = `rotate(${secDeg}deg)`;
-            handMin.style.transform = `rotate(${minDeg}deg)`;
-            handHour.style.transform = `rotate(${hourDeg}deg)`;
-        }
-
-        function speak(text) {
-            if ('speechSynthesis' in window) {
-                const cleanText = text.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{200D}：]/gu, '');
-                const utterance = new SpeechSynthesisUtterance(cleanText);
-                utterance.lang = 'zh-TW'; utterance.rate = 1.1; utterance.pitch = 1.4;
-                window.speechSynthesis.speak(utterance);
-            }
-        }
-
-        function formatTime(seconds) {
-            const m = Math.floor(seconds / 60).toString().padStart(2, '0');
-            const s = (seconds % 60).toString().padStart(2, '0');
-            return `${m}:${s}`;
-        }
-
-        function updateStars(count) {
-            totalStars += count;
-            starsCountEl.textContent = totalStars;
-            localStorage.setItem('beibei_total_stars', totalStars);
-            starsCountEl.parentElement.style.transform = "scale(1.2)";
-            setTimeout(() => starsCountEl.parentElement.style.transform = "scale(1)", 300);
-        }
-
-        function loadStars() {
-            totalStars = parseInt(localStorage.getItem('beibei_total_stars') || "0");
-            starsCountEl.textContent = totalStars;
-        }
-
-        function handleAction() {
-            if (gameFinished) { location.reload(); return; }
-            if (!isRunning) { startLevel(); } else { finishLevelAndAutoStartNext(); }
-        }
-
-        function startLevel() {
-            if (currentLevelIndex >= levels.length) return;
-            isRunning = true;
-            startTime = Date.now();
-            const lvl = levels[currentLevelIndex];
-            
-            levelNameEl.textContent = lvl.name;
-            speak(lvl.name);
-
-            if (lvl.type === 'html') {
-                levelIconContainer.innerHTML = lvl.icon;
-            } else {
-                let className = "level-sticker";
-                if (lvl.style) className += " " + lvl.style;
-                levelIconContainer.innerHTML = `<div class="${className}">${lvl.icon}</div>`;
-            }
-
-            btnEl.innerHTML = checkIconSVG;
-            btnEl.classList.add('finish');
-            
-            progressBar.style.width = '100%';
-            progressBar.style.background = 'linear-gradient(to bottom, #A1D2EB, #8FBED8)';
-
-            clearInterval(timerInterval);
-            timerInterval = setInterval(() => {
-                const elapsed = Math.floor((Date.now() - startTime) / 1000);
-                const remaining = TIME_LIMIT - elapsed;
-                
-                timerEl.textContent = formatTime(elapsed);
-                const percentage = Math.max(0, (remaining / TIME_LIMIT) * 100);
-                progressBar.style.width = percentage + '%';
-
-                if (percentage < 30) {
-                    progressBar.style.background = 'linear-gradient(to bottom, #FF9AA2, #FFB7C5)';
-                }
-
-                if (elapsed > TIME_LIMIT) { timerEl.style.color = '#D35400'; } else { timerEl.style.color = '#8D7B68'; }
-            }, 1000);
-        }
-
-        function finishLevelAndAutoStartNext() {
-            clearInterval(timerInterval);
-            const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
-            let starsEarned = 0;
-            if (elapsedSeconds <= TIME_LIMIT) {
-                starsEarned = 1;
-                const savedSeconds = TIME_LIMIT - elapsedSeconds;
-                const speedBonus = Math.floor(savedSeconds / 60);
-                starsEarned += speedBonus;
-                updateStars(starsEarned);
-            }
-            currentLevelIndex++;
-            if (currentLevelIndex < levels.length) { startLevel(); } else { endGame(); }
-        }
-
-        function endGame() {
-            isRunning = false;
-            gameFinished = true;
-            const now = new Date();
-            const targetTime = new Date();
-            targetTime.setHours(6, 50, 0);
-
-            let isEarlyBird = false;
-            let bonusText = "";
-            if (now < targetTime) {
-                updateStars(5);
-                isEarlyBird = true;
-                bonusText = "早鳥 +5 顆星！";
-            }
-
-            saveDailyRecord(isEarlyBird);
-
-            levelNameEl.textContent = "挑戰成功！";
-            levelIconContainer.innerHTML = `<div class="level-sticker">🎉</div>`;
-            timerEl.textContent = `太棒了！ ${bonusText}`;
-            document.querySelector('.progress-bar-wrap').style.display = 'none';
-            
-            btnEl.innerHTML = "明天見";
-            btnEl.style.fontSize = "1.8rem";
-            btnEl.style.background = "linear-gradient(to bottom, #E0E0E0, #D0D0D0)";
-            btnEl.style.border = "5px solid #A0A0A0";
-            btnEl.style.boxShadow = "0 10px 0 #808080, 0 15px 20px rgba(0,0,0,0.1)";
-            btnEl.style.color = "#666";
-            btnEl.classList.remove('finish');
-            
-            speak(`恭喜！獲得了 ${totalStars} 顆星星！`);
-            startConfetti();
-        }
-
-        function saveDailyRecord(isEarly) {
-            const today = new Date();
-            const dateKey = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
-            let calendarData = JSON.parse(localStorage.getItem('beibei_calendar') || "{}");
-            calendarData[dateKey] = { done: true, early: isEarly };
-            localStorage.setItem('beibei_calendar', JSON.stringify(calendarData));
-            renderCalendar();
-        }
-
-        function renderCalendar() {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = now.getMonth();
-            calTitle.textContent = `${year}年 ${month + 1}月`;
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-            const firstDayIndex = new Date(year, month, 1).getDay();
-            let calendarData = JSON.parse(localStorage.getItem('beibei_calendar') || "{}");
-            let html = '';
-            for (let i = 0; i < firstDayIndex; i++) html += `<div></div>`;
-            for (let day = 1; day <= daysInMonth; day++) {
-                const dateKey = `${year}-${month + 1}-${day}`;
-                const record = calendarData[dateKey];
-                const isToday = (day === now.getDate());
-                let classes = 'cal-day';
-                let content = day;
-                if (isToday) classes += ' today';
-                if (record) {
-                    if (record.early) { classes += ' done early'; content = '⭐'; } 
-                    else { classes += ' done'; content = '✓'; }
-                }
-                html += `<div class="${classes}">${content}</div>`;
-            }
-            calGrid.innerHTML = html;
-        }
-
-        function clearHistory() {
-            if(confirm("要清除所有星星和月曆貼紙嗎？")) {
-                localStorage.removeItem('beibei_calendar');
-                localStorage.removeItem('beibei_total_stars');
-                location.reload();
-            }
-        }
-
-        function startConfetti() {
-            const canvas = document.getElementById('confetti-canvas');
-            canvas.style.display = 'block';
-            const ctx = canvas.getContext('2d');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            const pieces = [];
-            const colors = ['#A1D2EB', '#F4EBC1', '#87C158', '#FFD1DC'];
-            for (let i = 0; i < 150; i++) {
-                pieces.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height - canvas.height,
-                    color: colors[Math.floor(Math.random() * colors.length)],
-                    size: Math.random() * 12 + 8,
-                    speed: Math.random() * 4 + 2,
-                    rotation: Math.random() * 360
-                });
-            }
-            function draw() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                pieces.forEach(p => {
-                    ctx.save();
-                    ctx.translate(p.x, p.y);
-                    ctx.rotate(p.rotation * Math.PI / 180);
-                    ctx.fillStyle = p.color;
-                    ctx.beginPath(); ctx.arc(0, 0, p.size/2, 0, 2 * Math.PI); ctx.fill();
-                    ctx.restore();
-                    p.y += p.speed; p.rotation += p.speed * 1.5;
-                    if (p.y > canvas.height) p.y = -20;
-                });
-                requestAnimationFrame(draw);
-            }
-            draw();
-            setTimeout(() => canvas.style.display = 'none', 5000);
-        }
-    </script>
-</body>
-</html>
-
-
+        let
