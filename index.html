@@ -32,7 +32,8 @@
 
             background-color: var(--ghibli-sky);
             background-image: url('cat.png'); 
-            background-size: 120px auto; 
+            /* --- 修改處：放大背景圖案尺寸 --- */
+            background-size: 180px auto; /* 原本是 120px，改大到 180px */
             background-repeat: repeat;
             background-position: center top; 
             background-attachment: fixed; 
@@ -107,16 +108,14 @@
             margin-bottom: 20px; position: relative;
         }
 
-        /* --- 修改處：將內容區塊置中 --- */
         .level-content-wrapper {
             display: flex;
             flex-direction: row;
             align-items: center; 
-            justify-content: center; /* 改為置中對齊 */
+            justify-content: center; 
             width: 100%;
             gap: 15px; 
             margin-bottom: 15px;
-            /* 移除 flex: 1，讓它根據內容寬度置中 */
         }
 
         .level-sticker-container { 
@@ -139,9 +138,8 @@
             object-fit: contain; 
         }
         
-        /* --- 修改處：放大 Emoji 字體大小 --- */
         .level-sticker { 
-            font-size: 8.5rem; /* 增大字體 */
+            font-size: 8.5rem; 
             line-height: 1; 
             filter: drop-shadow(0 6px 4px rgba(0,0,0,0.1)); 
             animation: bounce-gentle 3s infinite ease-in-out; 
@@ -153,12 +151,12 @@
         
         .blue-bag { filter: hue-rotate(210deg) drop-shadow(0 6px 4px rgba(0,0,0,0.1)) !important; }
 
+        /* --- 修改處：將文字對齊改為置中 --- */
         .level-title { 
             font-size: 2.6rem; 
             color: var(--text-dark); 
             margin: 0; 
-            text-align: left; 
-            /* 移除 flex: 1，讓文字緊鄰圖案 */
+            text-align: center; /* 原本是 left，改成 center 以平衡視覺 */
             line-height: 1.1;
         }
         
@@ -374,7 +372,13 @@
             { name: "刷牙", icon: "🪥", type: "emoji", style: "" },
             { name: "換衣服", icon: "👕", type: "emoji", style: "" },
             { name: "收書包", icon: "🎒", type: "emoji", style: "blue-bag" }, 
-            { name: "襪子鞋子", icon: "<span>🧦</span><span>👟</span>", type: "html", style: "" },
+            // --- 修改處：改用 foot.png 圖片 ---
+            { 
+                name: "襪子鞋子", 
+                icon: `<img src="foot.png" alt="Foot" style="height: 100%; width: auto;">`, 
+                type: "html", 
+                style: "" 
+            },
             { 
                 name: "出發!", 
                 icon: `<img src="go.png" alt="Go" style="height: 100%; width: auto;">`, 
@@ -410,7 +414,6 @@
         const digitalClock = document.getElementById('digital-clock');
 
         // 初始化
-        // --- 修改處：移除初始太陽圖案的 class="svg-icon" 和 inline style 中的 filter ---
         defaultSunEl.innerHTML = '<img src="sun.png" alt="sun" style="width: 100%; height: 100%; object-fit: contain;">';
         starsCountEl.textContent = 0;
         renderCalendar();
